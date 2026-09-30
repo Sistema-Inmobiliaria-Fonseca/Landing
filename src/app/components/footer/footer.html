@@ -1,0 +1,74 @@
+<footer class="footer">
+  <div class="contenedor footer__contenido">
+    <div class="footer__marca">
+      <a class="footer__logo" href="#inicio">
+        <span class="footer__logo-icono" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5 12 3l9 7.5" />
+            <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
+            <path d="M10 21v-6h4v6" />
+          </svg>
+        </span>
+        <span class="footer__logo-texto">{{ inmobiliaria.nombre }}</span>
+      </a>
+
+      <p class="footer__descripcion">{{ inmobiliaria.lema }}. Compra, vende y alquila con nosotros.</p>
+
+      <ul class="footer__redes">
+        @for (red of inmobiliaria.redes; track red.nombre) {
+          <li>
+            <a
+              class="footer__red"
+              [href]="red.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="red.nombre"
+              [title]="red.nombre"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path [attr.d]="iconosRed[red.icono]" />
+              </svg>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <nav class="footer__columna" aria-label="Navegación del pie de página">
+      <h3 class="footer__titulo">Navegación</h3>
+      <ul class="footer__lista">
+        @for (enlace of navegacion; track enlace.id) {
+          <li>
+            <a class="footer__enlace" [href]="'#' + enlace.id">{{ enlace.etiqueta }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__columna">
+      <h3 class="footer__titulo">Contacto</h3>
+      <ul class="footer__lista footer__lista--contacto">
+        <li>
+          <a class="footer__enlace" [href]="'tel:' + inmobiliaria.telefonoEnlace">
+            {{ inmobiliaria.telefono }}
+          </a>
+        </li>
+        <li>
+          <a class="footer__enlace" [href]="'mailto:' + inmobiliaria.email">
+            {{ inmobiliaria.email }}
+          </a>
+        </li>
+        <li>
+          <span class="footer__texto">{{ inmobiliaria.direccion }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__barra">
+    <div class="contenedor footer__barra-contenido">
+      <p>© {{ anioActual }} {{ inmobiliaria.nombre }}. Todos los derechos reservados.</p>
+      <p class="footer__legal">Datos de ejemplo. La información publicada es orientativa.</p>
+    </div>
+  </div>
+</footer>

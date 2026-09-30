@@ -1,0 +1,104 @@
+.categorias__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 26px 24px 22px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background-color: var(--blanco);
+  transition: transform var(--transicion), box-shadow var(--transicion),
+    border-color var(--transicion);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--azul-200);
+    box-shadow: var(--sombra-lg);
+  }
+}
+
+.categoria__icono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radio-md);
+  background-color: var(--azul-050);
+  color: var(--azul-600);
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.categoria__icono svg {
+  width: 24px;
+  height: 24px;
+}
+
+.categoria:hover .categoria__icono {
+  background-color: var(--azul-600);
+  color: var(--blanco);
+}
+
+.categoria__nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--gris-900);
+  letter-spacing: -0.015em;
+}
+
+.categoria__descripcion {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-texto-suave);
+  flex: 1;
+}
+
+.categoria__enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--azul-600);
+}
+
+.categoria__enlace svg {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--transicion);
+}
+
+.categoria:hover .categoria__enlace svg {
+  transform: translateX(3px);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .categorias__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .categorias__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .categoria {
+    padding: 22px 20px 20px;
+  }
+}

@@ -1,0 +1,44 @@
+<app-header />
+
+<main>
+  <app-hero />
+
+  <app-categories />
+
+  <section class="seccion seccion--suave" id="propiedades">
+    <div class="contenedor">
+      <div class="propiedades__encabezado">
+        <div>
+          <span class="seccion__antetitulo">Propiedades destacadas</span>
+          <h2 class="seccion__titulo">Opciones seleccionadas para vos</h2>
+          <p class="seccion__descripcion">
+            Una muestra de nuestro portfolio. La búsqueda con filtros y la
+            paginación llegan en la próxima etapa.
+          </p>
+        </div>
+
+        <a class="boton boton--contorno propiedades__ver-todas" href="#contacto">
+          Ver todas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <ul class="grid grid--3 propiedades__grid">
+        @for (propiedad of propiedades; track propiedad.id) {
+          <li>
+            <app-property-card [propiedad]="propiedad" />
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <app-about />
+  <app-services />
+  <app-location />
+  <app-contact />
+</main>
+
+<app-footer />

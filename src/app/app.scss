@@ -1,0 +1,46 @@
+.propiedades__encabezado {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.propiedades__ver-todas {
+  flex-shrink: 0;
+  margin-bottom: 6px;
+}
+
+.propiedades__ver-todas svg {
+  width: 17px;
+  height: 17px;
+  transition: transform var(--transicion);
+}
+
+.propiedades__ver-todas:hover svg {
+  transform: translateX(3px);
+}
+
+.propiedades__grid {
+  gap: 26px;
+}
+
+.propiedades__grid > li {
+  display: flex;
+}
+
+.propiedades__grid app-property-card {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .propiedades__encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+
+  .propiedades__ver-todas {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,115 @@
+<section class="seccion seccion--suave ubicacion" id="ubicacion">
+  <div class="contenedor ubicacion__contenido">
+    <div class="ubicacion__texto">
+      <span class="seccion__antetitulo">Ubicación</span>
+
+      <h2 class="seccion__titulo">Estamos donde necesitás estar</h2>
+
+      <p class="seccion__descripcion">
+        Nuestra oficina central está en el centro de la ciudad, con atención
+        personalizada y acceso a todo el portfolio del catálogo. También
+        trabajamos con propiedades en el interior de la provincia.
+      </p>
+
+      <ul class="ubicacion__datos">
+        <li>
+          <span class="ubicacion__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+              <circle cx="12" cy="10" r="2.6" />
+            </svg>
+          </span>
+          <span>
+            <strong>Dirección</strong>
+            <small>{{ inmobiliaria.direccion }}</small>
+          </span>
+        </li>
+        <li>
+          <span class="ubicacion__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z" />
+            </svg>
+          </span>
+          <span>
+            <strong>Cobertura</strong>
+            <small>Buenos Aires, Córdoba, Mendoza, Neuquén y otras provincias</small>
+          </span>
+        </li>
+        <li>
+          <span class="ubicacion__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3.5 2" />
+            </svg>
+          </span>
+          <span>
+            <strong>Visitas</strong>
+            <small>Con turno previo, de lunes a sábado</small>
+          </span>
+        </li>
+      </ul>
+
+      <a
+        class="boton boton--contorno ubicacion__boton"
+        href="https://www.google.com/maps/search/?api=1&query=Av+C Corrientes+1234+Buenos+Aires"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Cómo llegar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="ubicacion__mapa">
+      @if (mapaPendiente) {
+        <div class="mapa" role="img" aria-label="Mapa de ubicación de la oficina, pendiente de integración">
+          <svg class="mapa__lienzo" viewBox="0 0 600 420" fill="none" aria-hidden="true">
+            <rect width="600" height="420" fill="#eef4fb" />
+
+            <path d="M0 300h600v120H0z" fill="#dbeafe" />
+            <path d="M0 296h600" stroke="#bcd8f7" stroke-width="3" />
+
+            <g stroke="#ffffff" stroke-width="10" stroke-linecap="round">
+              <path d="M60 0v300M180 0v300M320 0v300M460 0v300" />
+              <path d="M0 70h600M0 150h600M0 230h600" />
+            </g>
+
+            <g stroke="#d5e4f5" stroke-width="2">
+              <path d="M120 0v300M250 0v300M390 0v300M530 0v300" />
+              <path d="M0 110h600M0 190h600M0 262h600" />
+            </g>
+
+            <path d="M0 210c80-26 140 18 220 4s150-56 240-40 90 44 140 40" stroke="#7db2ee" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7" />
+
+            <g fill="#cfe0f5">
+              <rect x="200" y="80" width="46" height="34" rx="4" />
+              <rect x="260" y="80" width="46" height="34" rx="4" />
+              <rect x="200" y="126" width="46" height="34" rx="4" />
+              <rect x="340" y="160" width="52" height="38" rx="4" />
+              <rect x="406" y="160" width="52" height="38" rx="4" />
+              <rect x="472" y="94" width="46" height="34" rx="4" />
+            </g>
+          </svg>
+
+          <div class="mapa__pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+              <circle cx="12" cy="10" r="2.6" />
+            </svg>
+          </div>
+
+          <div class="mapa__aviso">
+            <span class="etiqueta etiqueta--azul">Mapa</span>
+            <p>
+              El mapa interactivo se incorpora en una etapa siguiente. La
+              sección ya está preparada para recibirlo.
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

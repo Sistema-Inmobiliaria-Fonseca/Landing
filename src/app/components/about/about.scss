@@ -1,0 +1,123 @@
+.about__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 72px);
+}
+
+/* Visual ------------------------------------------------------------------ */
+
+.about__visual {
+  position: relative;
+}
+
+.about__marco {
+  border-radius: var(--radio-xl);
+  overflow: hidden;
+  box-shadow: var(--sombra-xl);
+}
+
+.about__ilustracion {
+  width: 100%;
+  height: auto;
+}
+
+.about__insignia {
+  position: absolute;
+  right: -20px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 190px;
+  padding: 18px 20px;
+  border-radius: var(--radio-lg);
+  background-color: var(--blanco);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--sombra-lg);
+}
+
+.about__insignia-valor {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--azul-600);
+  letter-spacing: -0.03em;
+}
+
+.about__insignia-texto {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-texto-suave);
+}
+
+/* Texto ------------------------------------------------------------------- */
+
+.about__parrafo {
+  color: var(--color-texto-suave);
+  font-size: 1.0625rem;
+}
+
+.about__parrafo + .about__parrafo {
+  margin-top: 16px;
+}
+
+.about__destacados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.about__destacado {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.about__destacado-valor {
+  font-family: var(--fuente-titulo);
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gris-900);
+  letter-spacing: -0.025em;
+}
+
+.about__destacado-etiqueta {
+  font-size: 0.8125rem;
+  color: var(--color-texto-tenue);
+}
+
+.about__boton {
+  margin-top: 32px;
+}
+
+.about__boton svg {
+  width: 17px;
+  height: 17px;
+  transition: transform var(--transicion);
+}
+
+.about__boton:hover svg {
+  transform: translateX(3px);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .about__contenido {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about__visual {
+    max-width: 480px;
+  }
+
+  .about__insignia {
+    right: 12px;
+  }
+}

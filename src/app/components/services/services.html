@@ -1,0 +1,27 @@
+<section class="seccion servicios" id="servicios">
+  <div class="contenedor">
+    <div class="seccion__encabezado seccion__encabezado--centrado">
+      <span class="seccion__antetitulo">Qué hacemos</span>
+      <h2 class="seccion__titulo">Servicios para cada etapa</h2>
+      <p class="seccion__descripcion">
+        Un equipo preparado para acompañarte desde la primera visita hasta la
+        entrega de las llaves.
+      </p>
+    </div>
+
+    <ul class="grid grid--3 servicios__grid">
+      @for (servicio of servicios; track servicio.titulo) {
+        <li class="servicio">
+          <span class="servicio__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path [attr.d]="servicio.icono" />
+            </svg>
+          </span>
+
+          <h3 class="servicio__titulo">{{ servicio.titulo }}</h3>
+          <p class="servicio__descripcion">{{ servicio.descripcion }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

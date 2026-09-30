@@ -1,0 +1,113 @@
+<section class="hero" id="inicio">
+  <div class="hero__fondo" aria-hidden="true"></div>
+
+  <div class="contenedor hero__contenido">
+    <div class="hero__texto">
+      <span class="hero__antetitulo">
+        <span class="hero__punto"></span>
+        Inmobiliaria del Sur · Bs. As. y provincias
+      </span>
+
+      <h1 class="hero__titulo">
+        Encontrá el lugar<br />
+        <span class="hero__titulo-enfasis">que querés habitar</span>
+      </h1>
+
+      <p class="hero__subtitulo">
+        Casas, departamentos, lotes, locales y campos con documentación
+        verificada y asesoramiento personalizado de principio a fin.
+      </p>
+
+      <div class="hero__acciones">
+        <a class="boton boton--claro hero__boton-principal" href="#propiedades">
+          Ver propiedades
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a class="boton hero__boton-contorno" href="#contacto">Hablemos</a>
+      </div>
+
+      <ul class="hero__indicadores">
+        @for (indicador of indicadores; track indicador.etiqueta) {
+          <li class="hero__indicador">
+            <span class="hero__indicador-valor">{{ indicador.valor }}</span>
+            <span class="hero__indicador-etiqueta">{{ indicador.etiqueta }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero__marco">
+        <svg
+          class="hero__ilustracion"
+          viewBox="0 0 400 320"
+          fill="none"
+          role="img"
+          aria-label="Ilustración de una vivienda con jardín y vehículo"
+        >
+          <defs>
+            <linearGradient id="hero-cielo" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#dbeafe" />
+              <stop offset="1" stop-color="#f0f6fe" />
+            </linearGradient>
+            <linearGradient id="hero-casa" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#ffffff" />
+              <stop offset="1" stop-color="#e2e8f0" />
+            </linearGradient>
+            <linearGradient id="hero-techo" x1="0" y1="0" x2="1" y2="0">
+              <stop stop-color="#1c6ac0" />
+              <stop offset="1" stop-color="#0a2340" />
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="400" height="320" fill="url(#hero-cielo)" />
+          <circle cx="316" cy="66" r="30" fill="#ffffff" opacity="0.75" />
+          <circle cx="86" cy="52" r="18" fill="#ffffff" opacity="0.55" />
+          <circle cx="140" cy="88" r="12" fill="#ffffff" opacity="0.45" />
+
+          <path d="M0 244h400v76H0z" fill="#bcd8f7" opacity="0.55" />
+          <path d="M0 258h400v62H0z" fill="#7db2ee" opacity="0.4" />
+
+          <path d="M108 244V150l92-58 92 58v94z" fill="url(#hero-casa)" />
+          <path d="M200 92 108 150h184z" fill="url(#hero-techo)" />
+          <path d="M200 92 108 150h-14l106-66 106 66h-14z" fill="#0a2340" opacity="0.18" />
+
+          <rect x="132" y="168" width="46" height="40" rx="4" fill="#bcd8f7" />
+          <rect x="132" y="168" width="46" height="40" rx="4" fill="none" stroke="#0f3159" stroke-width="2" />
+          <path d="M155 168v40M132 188h46" stroke="#0f3159" stroke-width="1.6" />
+
+          <rect x="222" y="168" width="46" height="40" rx="4" fill="#bcd8f7" />
+          <rect x="222" y="168" width="46" height="40" rx="4" fill="none" stroke="#0f3159" stroke-width="2" />
+          <path d="M245 168v40M222 188h46" stroke="#0f3159" stroke-width="1.6" />
+
+          <rect x="182" y="196" width="36" height="48" rx="3" fill="#17518f" />
+          <circle cx="212" cy="222" r="2.4" fill="#ffffff" />
+
+          <path d="M126 244v-34M274 244v-34" stroke="#0f3159" stroke-width="4" stroke-linecap="round" />
+          <circle cx="126" cy="204" r="20" fill="#17518f" opacity="0.28" />
+          <circle cx="274" cy="204" r="16" fill="#17518f" opacity="0.24" />
+          <circle cx="126" cy="204" r="12" fill="#1c6ac0" opacity="0.5" />
+
+          <path d="M44 244v-24M356 244v-20" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+          <path d="M44 222l-12 12M44 222l12 12M44 222h-14M44 222h14" stroke="#0a2340" stroke-width="2.4" stroke-linecap="round" />
+          <path d="M356 226l-10 10M356 226l10 10" stroke="#0a2340" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <div class="hero__tarjeta">
+        <span class="hero__tarjeta-icono" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+            <circle cx="12" cy="10" r="2.6" />
+          </svg>
+        </span>
+        <span class="hero__tarjeta-texto">
+          <strong>Cobertura nacional</strong>
+          <small>Presentes en 7 provincias</small>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

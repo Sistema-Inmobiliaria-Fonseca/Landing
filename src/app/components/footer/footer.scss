@@ -1,0 +1,157 @@
+.footer {
+  background-color: var(--azul-950);
+  color: var(--gris-300);
+}
+
+.footer__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 48px;
+  padding-block: clamp(48px, 6vw, 72px);
+}
+
+/* Marca ------------------------------------------------------------------- */
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.footer__logo-icono {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radio-md);
+  background: linear-gradient(140deg, var(--azul-500), var(--azul-700));
+  color: var(--blanco);
+}
+
+.footer__logo-icono svg {
+  width: 21px;
+  height: 21px;
+}
+
+.footer__logo-texto {
+  font-family: var(--fuente-titulo);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--blanco);
+  letter-spacing: -0.02em;
+}
+
+.footer__descripcion {
+  max-width: 26rem;
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--gris-400);
+}
+
+.footer__redes {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.footer__red {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radio-md);
+  color: var(--gris-300);
+  transition: color var(--transicion), background-color var(--transicion),
+    border-color var(--transicion);
+}
+
+.footer__red svg {
+  width: 17px;
+  height: 17px;
+}
+
+.footer__red:hover {
+  background-color: var(--azul-600);
+  border-color: var(--azul-600);
+  color: var(--blanco);
+}
+
+/* Columnas ---------------------------------------------------------------- */
+
+.footer__titulo {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  margin-bottom: 18px;
+}
+
+.footer__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer__enlace,
+.footer__texto {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--gris-400);
+  transition: color var(--transicion);
+}
+
+.footer__enlace:hover {
+  color: var(--blanco);
+}
+
+.footer__lista--contacto .footer__texto {
+  max-width: 20rem;
+}
+
+/* Barra legal ------------------------------------------------------------- */
+
+.footer__barra {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.footer__barra-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 22px;
+  font-size: 0.8125rem;
+  color: var(--gris-500);
+}
+
+.footer__legal {
+  color: var(--gris-500);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .footer__contenido {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .footer__marca {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__contenido {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer__barra-contenido {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
