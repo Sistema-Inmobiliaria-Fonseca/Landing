@@ -1,104 +1,182 @@
 <section class="seccion contacto" id="contacto">
   <div class="contenedor">
     <div class="contacto__panel">
+
       <div class="contacto__texto">
         <span class="seccion__antetitulo">Contacto</span>
 
-        <h2 class="seccion__titulo">Datos de contacto</h2>
+        <h2 class="seccion__titulo">
+          Hablemos de tu próximo proyecto
+        </h2>
 
         <p class="seccion__descripcion">
-          La inmobiliaria todavía no tiene cargados sus datos de contacto.
-          Esta sección se completará con teléfono, email, dirección y horarios
-          cuando estén definidos.
+          Estamos para acompañarte en cada paso de tu proyecto inmobiliario.
+          Consultanos por propiedades, oportunidades de venta y preventa en
+          Villa María y zona.
         </p>
 
         <ul class="contacto__datos">
+
+          <!-- MILAGROS -->
           <li>
             <span class="contacto__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1Z" />
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"
+                />
+                <path
+                  d="M8.5 8.5c.3-.5.6-.5.9-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.6.7c.5 1 1.3 1.8 2.3 2.3l.7-.6c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .6-.5.9-.4.3-1 .4-1.5.2-2.8-.7-5.1-3-5.8-5.8-.2-.5-.1-1.1.2-1.5Z"
+                />
               </svg>
             </span>
-            <span>
-              <small>Teléfono</small>
-              @if (sitio.telefono) {
-                <a [href]="'tel:' + sitio.telefono">{{ sitio.telefono }}</a>
-              } @else {
-                <strong class="contacto__pendiente">{{ pendiente }}</strong>
-              }
+
+            <span class="contacto__persona">
+              <small>Milagros · Asesora Comercial</small>
+
+              <span class="contacto__telefono">
+                <a href="tel:+543534773448">
+                 
+                </a>
+
+                <a
+                  class="contacto__whatsapp"
+                  href="https://wa.me/543534773448?text=Hola%20Milagros%2C%20quisiera%20hacer%20una%20consulta."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click aquí para Consultar por WhatsApp
+                </a>
+              </span>
             </span>
           </li>
 
+          <!-- CARLOS FONSECA -->
           <li>
             <span class="contacto__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"
+                />
+                <path
+                  d="M8.5 8.5c.3-.5.6-.5.9-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.6.7c.5.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .6-.5.9-.4.3-1 .4-1.5.2-2.8-.7-5.1-3-5.8-5.8-.2-.5-.1-1.1.2-1.5Z"
+                />
+              </svg>
+            </span>
+
+            <span class="contacto__persona">
+              <small>
+                Carlos Fonseca · Martillero y Corredor Público
+              </small>
+
+              <span class="contacto__telefono">
+                <a href="tel:+543534219291">
+                  
+                </a>
+
+                <a
+                  class="contacto__whatsapp"
+                  href="https://wa.me/543534219291?text=Hola%20Carlos%20Fonseca%2C%20quisiera%20hacer%20una%20consulta."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                   Click aquí para Consultar por WhatsApp
+                </a>
+              </span>
+            </span>
+          </li>
+
+          <!-- EMAIL -->
+          <li>
+            <span class="contacto__icono" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path d="m3.5 6.5 8.5 6 8.5-6" />
               </svg>
             </span>
+
             <span>
               <small>Email</small>
-              @if (sitio.email) {
-                <a [href]="'mailto:' + sitio.email">{{ sitio.email }}</a>
-              } @else {
-                <strong class="contacto__pendiente">{{ pendiente }}</strong>
-              }
+
+              <a href="mailto:inmocarlosfonseca@hotmail.com">
+                inmocarlosfonseca@hotmail.com
+              </a>
             </span>
           </li>
 
-          <li>
-            <span class="contacto__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
-                <circle cx="12" cy="10" r="2.6" />
-              </svg>
-            </span>
-            <span>
-              <small>Dirección</small>
-              @if (sitio.direccion) {
-                <strong>{{ sitio.direccion }}</strong>
-              } @else {
-                <strong class="contacto__pendiente">{{ pendiente }}</strong>
-              }
-            </span>
-          </li>
+          
+
         </ul>
+
+        <p class="contacto__matricula">
+          Matrícula Profesional: 044747
+        </p>
       </div>
 
       <div class="contacto__columna">
-        <div class="horarios">
-          <h3 class="horarios__titulo">Horarios de atención</h3>
 
-          @if (sitio.horarios.length > 0) {
-            <ul class="horarios__lista">
-              @for (horario of sitio.horarios; track horario.dia) {
-                <li>
-                  <span>{{ horario.dia }}</span>
-                  <span>{{ horario.rango }}</span>
-                </li>
-              }
-            </ul>
-          } @else {
-            <p class="horarios__pendiente">{{ pendiente }}</p>
-          }
+        <!-- REDES SOCIALES -->
+        <div class="horarios">
+          <h3 class="horarios__titulo">
+            Redes sociales
+          </h3>
+
+          <ul class="horarios__lista">
+
+            <!-- INSTAGRAM -->
+            <li>
+              <span>Instagram</span>
+
+              <a
+                href="https://www.instagram.com/inmocarlosfonseca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de Carlos Fonseca"
+              >
+                @inmocarlosfonseca
+              </a>
+            </li>
+
+            <!-- FACEBOOK -->
+            <li>
+              <span>Facebook</span>
+
+              <a
+                href="PEGAR-AQUI-EL-LINK-DE-FACEBOOK"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook de Carlos Fonseca"
+              >
+                Carlos Fonseca
+              </a>
+            </li>
+
+          </ul>
         </div>
 
-        @if (sitio.email) {
-          <a class="boton boton--primario boton--bloque contacto__cta" [href]="'mailto:' + sitio.email">
-            Escribir un mensaje
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-        } @else {
-          <a class="boton boton--primario boton--bloque contacto__cta" href="#categorias">
-            Ver categorías
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-        }
+
       </div>
+
     </div>
   </div>
 </section>

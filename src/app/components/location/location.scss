@@ -26,8 +26,15 @@
 
 /* Mapa -------------------------------------------------------------------- */
 
+.ubicacion__mapa {
+  width: 100%;
+  height: 540px;
+}
+
 .mapa {
   position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: var(--radio-xl);
   overflow: hidden;
   border: 1px solid var(--azul-200);
@@ -35,32 +42,11 @@
   background-color: var(--blanco);
 }
 
-.mapa__lienzo {
-  width: 100%;
-  height: auto;
+.mapa iframe {
   display: block;
-}
-
-.mapa__aviso {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: var(--radio-md);
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 1px solid var(--color-borde);
-  box-shadow: var(--sombra-sm);
-  backdrop-filter: blur(6px);
-}
-
-.mapa__aviso p {
-  font-size: 0.8125rem;
-  line-height: 1.45;
-  color: var(--color-texto-suave);
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* Responsive -------------------------------------------------------------- */
@@ -72,5 +58,16 @@
 
   .ubicacion__mapa {
     order: -1;
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ubicacion__mapa {
+    height: 360px;
+  }
+
+  .mapa {
+    border-radius: var(--radio-lg);
   }
 }

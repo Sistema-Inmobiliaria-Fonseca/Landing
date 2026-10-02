@@ -1,59 +1,71 @@
 <section class="seccion seccion--suave ubicacion" id="ubicacion">
   <div class="contenedor ubicacion__contenido">
-    <div class="ubicacion__texto">
-      <span class="seccion__antetitulo">Ubicación</span>
 
-      <h2 class="seccion__titulo">Ubicación próximamente</h2>
+    <div class="ubicacion__texto">
+
+      <span class="seccion__antetitulo">
+        Ubicación
+      </span>
+
+      <h2 class="seccion__titulo">
+        Encontranos en Villa María
+      </h2>
 
       <p class="seccion__descripcion">
-        La dirección de la oficina todavía no está cargada. Cuando se defina,
-        este espacio va a mostrar el mapa y los datos de contacto.
+        Estamos en San Juan 1020, Villa María, Córdoba.
+        Acercate a nuestra oficina para conocer nuestras propuestas
+        inmobiliarias y recibir asesoramiento personalizado.
       </p>
 
-      <div class="ubicacion__placeholder" role="note">
-        <span class="etiqueta etiqueta--azul">Pendiente de carga</span>
-        <p>{{ pendiente }}</p>
-      </div>
-    </div>
+      
 
-    <div class="ubicacion__mapa">
-      <div class="mapa" role="img" aria-label="Espacio reservado para el mapa, todavía sin cargar">
-        <svg class="mapa__lienzo" viewBox="0 0 600 420" fill="none" aria-hidden="true">
-          <rect width="600" height="420" fill="#eef4fb" />
+      <a
+        class="boton boton--primario"
+        href="https://www.google.com/maps/search/?api=1&query=San+Juan+1020%2C+Villa+Mar%C3%ADa%2C+C%C3%B3rdoba"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver ubicación en Google Maps"
+      >
+        Cómo llegar
 
-          <path d="M0 300h600v120H0z" fill="#dbeafe" />
-          <path d="M0 296h600" stroke="#bcd8f7" stroke-width="3" />
-
-          <g stroke="#ffffff" stroke-width="10" stroke-linecap="round">
-            <path d="M60 0v300M180 0v300M320 0v300M460 0v300" />
-            <path d="M0 70h600M0 150h600M0 230h600" />
-          </g>
-
-          <g stroke="#d5e4f5" stroke-width="2">
-            <path d="M120 0v300M250 0v300M390 0v300M530 0v300" />
-            <path d="M0 110h600M0 190h600M0 262h600" />
-          </g>
-
-          <path d="M0 210c80-26 140 18 220 4s150-56 240-40 90 44 140 40" stroke="#7db2ee" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7" />
-
-          <g fill="#cfe0f5">
-            <rect x="200" y="80" width="46" height="34" rx="4" />
-            <rect x="260" y="80" width="46" height="34" rx="4" />
-            <rect x="200" y="126" width="46" height="34" rx="4" />
-            <rect x="340" y="160" width="52" height="38" rx="4" />
-            <rect x="406" y="160" width="52" height="38" rx="4" />
-            <rect x="472" y="94" width="46" height="34" rx="4" />
-          </g>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14" />
+          <path d="M13 6l6 6-6 6" />
         </svg>
 
-        <div class="mapa__aviso">
-          <span class="etiqueta etiqueta--azul">Mapa</span>
-          <p>
-            El mapa se incorpora cuando la dirección esté definida. El espacio
-            ya está preparado para recibirlo.
-          </p>
-        </div>
-      </div>
+      </a>
+
     </div>
+
+
+    <!-- MAPA REAL -->
+    <div class="ubicacion__mapa">
+
+      <div class="mapa">
+
+        <iframe
+          src="https://www.google.com/maps?q=San+Juan+1020,+Villa+Mar%C3%ADa,+C%C3%B3rdoba&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Carlos Fonseca Negocios Inmobiliarios"
+        >
+        </iframe>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
