@@ -1,47 +1,50 @@
 /* ==========================================================================
-   Sistema de diseño — Inmobiliaria del Sur
-   Paleta: azul principal, blanco de fondo, grises para texto y superficies.
+   Sistema de diseño — Landing de propiedades
+   Paleta oficial:
+     Azul principal   #131936
+     Gris suave       #E1E2E4
+     Blanco           #FFFFFF
    ========================================================================== */
 
 :root {
-  /* Azules */
-  --azul-950: #061529;
-  --azul-900: #0a2340;
-  --azul-800: #0f3159;
-  --azul-700: #12406f;
-  --azul-600: #17518f;
-  --azul-500: #1c6ac0;
-  --azul-400: #3b8ae0;
-  --azul-300: #7db2ee;
-  --azul-200: #bcd8f7;
-  --azul-100: #ddebfc;
-  --azul-050: #f0f6fe;
+  /* Azules (rampa del azul oficial #131936) */
+  --azul-950: #080b1a;
+  --azul-900: #0c1026;
+  --azul-800: #131936;
+  --azul-700: #1e2750;
+  --azul-600: #2a3568;
+  --azul-500: #3c4a87;
+  --azul-400: #6b78ab;
+  --azul-300: #9aa3c7;
+  --azul-200: #c3c9de;
+  --azul-100: #e1e2e4;
+  --azul-050: #f2f3f5;
 
-  /* Grises */
-  --gris-900: #0f172a;
-  --gris-800: #1e293b;
-  --gris-700: #334155;
-  --gris-600: #475569;
-  --gris-500: #64748b;
-  --gris-400: #94a3b8;
-  --gris-300: #cbd5e1;
-  --gris-200: #e2e8f0;
-  --gris-100: #f1f5f9;
-  --gris-050: #f8fafc;
+  /* Grises (neutros con matiz azul) */
+  --gris-900: #131936;
+  --gris-800: #1c2444;
+  --gris-700: #2c3358;
+  --gris-600: #454c6b;
+  --gris-500: #5f667f;
+  --gris-400: #858ba0;
+  --gris-300: #b9bdca;
+  --gris-200: #e1e2e4;
+  --gris-100: #ecedef;
+  --gris-050: #f5f6f7;
 
   --blanco: #ffffff;
 
   /* Semánticos */
   --color-fondo: var(--blanco);
-  --color-fondo-suave: var(--gris-050);
+  --color-fondo-suave: #e1e2e4;
   --color-texto: var(--gris-800);
   --color-texto-suave: var(--gris-500);
   --color-texto-tenue: var(--gris-400);
-  --color-borde: var(--gris-200);
-  --color-borde-fuerte: var(--gris-300);
-  --color-primario: var(--azul-600);
-  --color-primario-fuerte: var(--azul-700);
-  --color-primario-suave: var(--azul-050);
+  --color-borde: #e1e2e4;
+  --color-borde-fuerte: #c9cbd0;
+  --color-primario: #131936;
+  --color-primario-fuerte: #0c1026;
+  --color-primario-suave: #e1e2e4;
 
   /* Tipografía */
   --fuente: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -57,15 +60,15 @@
   --radio-full: 999px;
 
   /* Sombras */
-  --sombra-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --sombra-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --sombra-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
-  --sombra-lg: 0 12px 28px rgba(15, 23, 42, 0.1), 0 4px 10px rgba(15, 23, 42, 0.04);
-  --sombra-xl: 0 24px 56px rgba(10, 35, 64, 0.16);
+  --sombra-xs: 0 1px 2px rgba(19, 25, 54, 0.06);
+  --sombra-sm: 0 1px 3px rgba(19, 25, 54, 0.08), 0 1px 2px rgba(19, 25, 54, 0.04);
+  --sombra-md: 0 4px 12px rgba(19, 25, 54, 0.08), 0 2px 4px rgba(19, 25, 54, 0.04);
+  --sombra-lg: 0 12px 28px rgba(19, 25, 54, 0.1), 0 4px 10px rgba(19, 25, 54, 0.04);
+  --sombra-xl: 0 24px 56px rgba(19, 25, 54, 0.18);
 
   /* Layout */
   --ancho-contenedor: 1200px;
-  --alto-header: 76px;
+  --alto-header: 88px;
   --transicion: 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -146,6 +149,17 @@ button {
 :focus-visible {
   outline: 2px solid var(--azul-500);
   outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Imágenes
+   -------------------------------------------------------------------------- */
+
+.imagen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* --------------------------------------------------------------------------

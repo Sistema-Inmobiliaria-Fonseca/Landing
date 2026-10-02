@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PENDIENTE } from '../../data/sitio.data';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent {
-  protected readonly destacados = [
-    { valor: '2011', etiqueta: 'Fundación' },
-    { valor: '35', etiqueta: 'Consultores' },
-    { valor: '98%', etiqueta: 'Operaciones con éxito' },
-  ];
+  protected readonly pendiente = PENDIENTE;
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { INMOBILIARIA } from '../../data/inmobiliaria.data';
+import { PENDIENTE } from '../../data/sitio.data';
 
 @Component({
   selector: 'app-location',
@@ -8,8 +8,5 @@ import { INMOBILIARIA } from '../../data/inmobiliaria.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationComponent {
-  protected readonly inmobiliaria = INMOBILIARIA;
-
-  /** Placeholder: acá se monta el mapa cuando se integre. */
-  protected readonly mapaPendiente = true;
+  protected readonly pendiente = PENDIENTE;
 }

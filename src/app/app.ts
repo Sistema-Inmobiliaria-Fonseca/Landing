@@ -9,7 +9,7 @@ import { LocationComponent } from './components/location/location';
 import { PropertyCardComponent } from './components/property-card/property-card';
 import { ServicesComponent } from './components/services/services';
 import { Propiedad } from './core/models';
-import { PROPIEDADES_MOCK } from './data/mock-propiedades';
+import { PROPIEDADES } from './data/propiedades.data';
 
 @Component({
   selector: 'app-root',
@@ -30,9 +30,13 @@ import { PROPIEDADES_MOCK } from './data/mock-propiedades';
 })
 export class App {
   /**
-   * MOCK: alimenta la seccion de propiedades destacadas.
-   * Reemplazar por GET /api/propiedades - el tipo `Propiedad` ya coincide
-   * con la respuesta del backend, asi que alcanza con asignar el resultado.
+   * Listado de propiedades. Hoy arranca vacio (la base tiene 0 registros),
+   * por eso la seccion muestra el estado vacio.
+   *
+   * Cuando exista la API, reemplazar por:
+   *   await http.get<Propiedad[]>('/api/propiedades')
+   *
+   * `PropertyCardComponent` ya esta listo para renderizar cada elemento.
    */
-  protected readonly propiedades: Propiedad[] = PROPIEDADES_MOCK;
+  protected readonly propiedades: Propiedad[] = PROPIEDADES;
 }

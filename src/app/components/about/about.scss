@@ -26,29 +26,17 @@
   position: absolute;
   right: -20px;
   bottom: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  max-width: 190px;
-  padding: 18px 20px;
+  max-width: 250px;
+  padding: 16px 20px;
   border-radius: var(--radio-lg);
   background-color: var(--blanco);
   border: 1px solid var(--color-borde);
   box-shadow: var(--sombra-lg);
 }
 
-.about__insignia-valor {
-  font-family: var(--fuente-titulo);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--azul-600);
-  letter-spacing: -0.03em;
-}
-
 .about__insignia-texto {
   font-size: 0.8125rem;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--color-texto-suave);
 }
 
@@ -63,37 +51,25 @@
   margin-top: 16px;
 }
 
-.about__destacados {
+.about__placeholder {
   display: flex;
-  flex-wrap: wrap;
-  gap: 36px;
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--color-borde);
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1px dashed var(--color-borde-fuerte);
+  border-radius: var(--radio-md);
+  background-color: var(--blanco);
 }
 
-.about__destacado {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.about__destacado-valor {
-  font-family: var(--fuente-titulo);
-  font-size: 1.625rem;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--gris-900);
-  letter-spacing: -0.025em;
-}
-
-.about__destacado-etiqueta {
-  font-size: 0.8125rem;
-  color: var(--color-texto-tenue);
+.about__placeholder p {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--gris-600);
 }
 
 .about__boton {
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 .about__boton svg {

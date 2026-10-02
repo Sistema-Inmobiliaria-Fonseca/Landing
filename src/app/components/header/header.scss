@@ -29,20 +29,12 @@
   flex-shrink: 0;
 }
 
-.marca__icono {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radio-md);
-  background: linear-gradient(140deg, var(--azul-600), var(--azul-800));
-  color: var(--blanco);
-  box-shadow: var(--sombra-sm);
-}
-
-.marca__icono svg {
-  width: 22px;
-  height: 22px;
+.marca__logo {
+  height: 58px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  border-radius: var(--radio-sm);
 }
 
 .marca__texto {
@@ -57,13 +49,6 @@
   font-weight: 700;
   color: var(--gris-900);
   letter-spacing: -0.02em;
-}
-
-.marca__lema {
-  font-size: 0.6875rem;
-  color: var(--color-texto-tenue);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 /* Navegación desktop ------------------------------------------------------ */
@@ -145,6 +130,17 @@
   display: none;
 }
 
+.boton-icono:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.boton-icono:disabled:hover {
+  color: var(--gris-600);
+  border-color: var(--color-borde);
+  background-color: var(--blanco);
+}
+
 /* Menú mobile ------------------------------------------------------------- */
 
 .menu-movil {
@@ -186,10 +182,6 @@
 @media (max-width: 640px) {
   .header__cta,
   .header__user {
-    display: none;
-  }
-
-  .marca__lema {
     display: none;
   }
 }

@@ -113,9 +113,15 @@
   white-space: nowrap;
 }
 
-.horarios__cerrado {
-  color: var(--gris-400) !important;
+.horarios__pendiente {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-texto-tenue);
+}
+
+.contacto__pendiente {
   font-weight: 500 !important;
+  color: var(--color-texto-tenue) !important;
 }
 
 .contacto__cta svg {

@@ -9,8 +9,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60rem 30rem at 88% -10%, rgba(28, 106, 192, 0.12), transparent 60%),
-    radial-gradient(40rem 24rem at -10% 110%, rgba(10, 35, 64, 0.08), transparent 60%);
+    radial-gradient(60rem 30rem at 88% -10%, rgba(19, 25, 54, 0.08), transparent 60%),
+    radial-gradient(40rem 24rem at -10% 110%, rgba(19, 25, 54, 0.06), transparent 60%);
   pointer-events: none;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .hero__boton-principal {
-  box-shadow: 0 10px 24px rgba(23, 81, 143, 0.28);
+  box-shadow: 0 10px 24px rgba(19, 25, 54, 0.22);
 }
 
 .hero__boton-principal svg {
@@ -96,33 +96,15 @@
 
 /* Indicadores ------------------------------------------------------------- */
 
-.hero__indicadores {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  margin-top: 44px;
-  padding-top: 28px;
-  border-top: 1px solid var(--azul-200);
-}
-
-.hero__indicador {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero__indicador-valor {
-  font-family: var(--fuente-titulo);
-  font-size: 1.5rem;
-  font-weight: 700;
+.hero__aviso {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 11px 18px;
+  border: 1px dashed var(--azul-300);
+  border-radius: var(--radio-md);
+  background-color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
   color: var(--azul-700);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.hero__indicador-etiqueta {
-  font-size: 0.8125rem;
-  color: var(--color-texto-suave);
 }
 
 /* Visual ------------------------------------------------------------------ */
@@ -134,15 +116,41 @@
 .hero__marco {
   border-radius: var(--radio-xl);
   overflow: hidden;
-  background: var(--blanco);
-  border: 1px solid var(--azul-200);
+  background: var(--color-fondo-suave);
+  border: 1px solid var(--color-borde);
   box-shadow: var(--sombra-xl);
 }
 
-.hero__ilustracion {
+/* Carrusel ---------------------------------------------------------------- */
+
+/* Todas las slides comparten la misma celda para que el bloque no cambie de
+   tamaño al cambiar de imagen. El alto fijo (4:3) preserva el diseño previo,
+   y `object-fit: cover` recorta los banners apaisados sin deformarlos. */
+.hero__pistas {
+  display: grid;
+  aspect-ratio: 4 / 3;
+}
+
+.hero__imagen {
+  grid-area: 1 / 1;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 900ms ease;
+  pointer-events: none;
+}
+
+.hero__imagen--activa {
+  opacity: 1;
+}
+
+/* Respeta la preferencia de movimiento reducido del usuario. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__imagen {
+    transition: none;
+  }
 }
 
 .hero__tarjeta {
@@ -210,10 +218,6 @@
 }
 
 @media (max-width: 640px) {
-  .hero__indicadores {
-    gap: 24px;
-  }
-
   .hero__tarjeta {
     left: 12px;
     bottom: -18px;

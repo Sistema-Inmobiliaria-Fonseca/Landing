@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Categoria } from '../../core/models/categoria.model';
-import { CATEGORIAS_MOCK } from '../../data/mock-categorias';
+import { Categoria } from '../../core/models';
+import { CATEGORIAS } from '../../data/categorias.data';
 
 @Component({
   selector: 'app-categories',
@@ -10,10 +10,10 @@ import { CATEGORIAS_MOCK } from '../../data/mock-categorias';
 })
 export class CategoriesComponent {
   /**
-   * MOCK: por defecto usa `CATEGORIAS_MOCK`.
+   * Categorias definidas en el sistema (Backend-/database/seeds).
    * Cuando exista la API, pasar `[categorias]="categoriasDesdeApi"`.
    */
-  readonly categorias = input<Categoria[]>(CATEGORIAS_MOCK);
+  readonly categorias = input<Categoria[]>(CATEGORIAS);
 
   /**
    * purely visual: asocia un ícono al `nombre` de la categoría.

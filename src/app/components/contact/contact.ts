@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { INMOBILIARIA } from '../../data/inmobiliaria.data';
+import { PENDIENTE, SITIO } from '../../data/sitio.data';
 
 @Component({
   selector: 'app-contact',
@@ -8,5 +8,6 @@ import { INMOBILIARIA } from '../../data/inmobiliaria.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
-  protected readonly inmobiliaria = INMOBILIARIA;
+  protected readonly sitio = SITIO;
+  protected readonly pendiente = PENDIENTE;
 }

@@ -7,7 +7,7 @@
           viewBox="0 0 360 420"
           fill="none"
           role="img"
-          aria-label="Ilustración de un equipo inmobiliario trabajando en una oficina"
+          aria-label="Ilustración decorativa de una oficina"
         >
           <defs>
             <linearGradient id="about-fondo" x1="0" y1="0" x2="1" y2="1">
@@ -36,42 +36,36 @@
       </div>
 
       <div class="about__insignia">
-        <span class="about__insignia-valor">15</span>
-        <span class="about__insignia-texto">años acompañando familias y empresas</span>
+        <span class="about__insignia-texto">
+          La imagen y el contenido institucional se completarán cuando la
+          inmobiliaria cargue su información.
+        </span>
       </div>
     </div>
 
     <div class="about__texto">
       <span class="seccion__antetitulo">Quiénes somos</span>
 
-      <h2 class="seccion__titulo">
-        Más que una inmobiliaria,<br />
-        un socio en cada decisión
-      </h2>
+      <h2 class="seccion__titulo">Información institucional próximamente</h2>
 
       <p class="about__parrafo">
-        Nacimos en 2011 con una idea simple: acompañar a cada cliente con
-        honestidad, técnica y tiempo. Hoy trabajamos con particulares, parejas,
-        empresas y desarrolladores que buscan un lugar para proyectarse.
+        Esta sección está reservada para presentar la trayectoria, el equipo y
+        la forma de trabajo de la inmobiliaria. Todavía no hay información
+        cargada.
       </p>
 
       <p class="about__parrafo">
-        Cada propiedad que publicamos pasa por una verificación documental
-        completa. Confiamos en que comprar o alquilar bien no es cuestión de
-        suerte, sino de información clara y buen consejo.
+        Mientras tanto, podés recorrer las categorías disponibles en el sistema
+        o contactarnos para consultar por inmuebles.
       </p>
 
-      <ul class="about__destacados">
-        @for (destacado of destacados; track destacado.etiqueta) {
-          <li class="about__destacado">
-            <span class="about__destacado-valor">{{ destacado.valor }}</span>
-            <span class="about__destacado-etiqueta">{{ destacado.etiqueta }}</span>
-          </li>
-        }
-      </ul>
+      <div class="about__placeholder" role="note">
+        <span class="etiqueta etiqueta--azul">Pendiente de carga</span>
+        <p>{{ pendiente }}</p>
+      </div>
 
       <a class="boton boton--primario about__boton" href="#contacto">
-        Conocé nuestro equipo
+        Ir a contacto
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { INMOBILIARIA } from '../../data/inmobiliaria.data';
+import { FRONTEND_ADMIN_LOGIN } from '../../core/config/app-urls.config';
 import { NAVEGACION } from '../../data/navegacion.data';
+import { SITIO } from '../../data/sitio.data';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ import { NAVEGACION } from '../../data/navegacion.data';
 })
 export class HeaderComponent {
   protected readonly navegacion = NAVEGACION;
-  protected readonly inmobiliaria = INMOBILIARIA;
+  protected readonly sitio = SITIO;
+  protected readonly loginAdmin = FRONTEND_ADMIN_LOGIN;
   protected readonly menuAbierto = signal(false);
 
   protected alternarMenu(): void {
