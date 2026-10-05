@@ -37,14 +37,53 @@
 
 .filtros {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 24px 40px;
+  flex-direction: column;
+  gap: 22px;
   margin-bottom: 28px;
   padding: 22px 24px;
   border: 1px solid var(--color-borde);
   border-radius: var(--radio-lg);
   background-color: var(--blanco);
+}
+
+/* Rejilla de filtros: en desktop se acomodan en columnas y en móvil baja a una
+   sola porque `auto-fit` colapsa solo cuando no entra el ancho mínimo. */
+.filtros__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 22px 24px;
+  align-items: start;
+}
+
+.filtros__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+/* La línea divisoria solo tiene sentido cuando hay un panel debajo. */
+.filtros--abierto .filtros__cabecera {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.filtros__acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filtros__titulo {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+/* La categoría lleva todos sus chips y necesita el ancho completo de la rejilla. */
+.filtros__grupo--ancho {
+  grid-column: 1 / -1;
 }
 
 .filtros__grupo {
@@ -62,10 +101,19 @@
   color: var(--color-texto-tenue);
 }
 
+/* Todos los grupos de botones siguen el mismo layout; los de opción única
+   (moneda, ambientes) solo agregan el chip compacto. */
 .filtros__chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+/* Par de campos "Desde / Hasta" de un rango. */
+.filtros__rango {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 /* Chip --------------------------------------------------------------------- */
@@ -111,6 +159,13 @@
     background-color: var(--azul-700);
     color: var(--blanco);
   }
+}
+
+/* Los chips de opción única (moneda, ambientes) son más chicos para que no
+   compitan con los de categoría. */
+.chip--compacto {
+  padding: 7px 13px;
+  font-size: 0.8125rem;
 }
 
 /* El check solo aparece cuando el toggle está activo. */
@@ -241,7 +296,7 @@
   }
 
   .filtros {
-    gap: 20px 28px;
+    gap: 20px;
     padding: 18px;
   }
 }

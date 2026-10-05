@@ -307,6 +307,53 @@ button {
 }
 
 /* --------------------------------------------------------------------------
+   Controles de formulario
+   -------------------------------------------------------------------------- */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.campo__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-texto-suave);
+}
+
+.campo__control {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid var(--color-borde-fuerte);
+  border-radius: var(--radio-md);
+  background-color: var(--blanco);
+  color: var(--color-texto);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition:
+    border-color var(--transicion),
+    box-shadow var(--transicion);
+}
+
+.campo__control::placeholder {
+  color: var(--color-texto-tenue);
+}
+
+.campo__control:hover {
+  border-color: var(--azul-300);
+}
+
+.campo__control:focus-visible {
+  outline: none;
+  border-color: var(--azul-600);
+  box-shadow: 0 0 0 3px var(--azul-050);
+}
+
+/* --------------------------------------------------------------------------
    Grids
    -------------------------------------------------------------------------- */
 

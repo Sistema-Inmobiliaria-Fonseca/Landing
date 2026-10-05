@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ImagenPropiedad, Propiedad, imagenPrincipal } from '../../core/models';
 import { FormatoEstadoPipe } from '../../shared/pipes/formato-estado.pipe';
 import { FormatoMetrosPipe } from '../../shared/pipes/formato-metros.pipe';
@@ -7,7 +8,7 @@ import { FormatoValorPipe } from '../../shared/pipes/formato-valor.pipe';
 
 @Component({
   selector: 'app-property-card',
-  imports: [FormatoValorPipe, FormatoMetrosPipe, FormatoUbicacionPipe, FormatoEstadoPipe],
+  imports: [RouterLink, FormatoValorPipe, FormatoMetrosPipe, FormatoUbicacionPipe, FormatoEstadoPipe],
   templateUrl: './property-card.html',
   styleUrl: './property-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

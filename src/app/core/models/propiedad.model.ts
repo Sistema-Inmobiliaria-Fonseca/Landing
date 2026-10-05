@@ -14,10 +14,21 @@ import { Ubicacion } from './ubicacion.model';
 export type EstadoPropiedad = 'disponible' | 'alquilada' | 'vendida';
 
 /**
+ * Moneda del valor de la propiedad.
+ *
+ * Fuente de verdad: database/migrations/011_add_moneda_to_propiedades_table.sql
+ *   `moneda VARCHAR(10) NULL` (la columna admite NULL: son propiedades cargadas
+ *   antes de esa migration).
+ * Tambien valida App\Models\TipoMoneda (enum ARS, USD).
+ */
+export type TipoMoneda = 'ARS' | 'USD';
+
+/**
  * Propiedad inmobiliaria.
  *
  * Fuente de verdad: database/migrations/002_create_propiedades_table.sql
  *                   database/migrations/007_add_localidad_id_to_propiedades_table.sql
+ *                   database/migrations/011_add_moneda_to_propiedades_table.sql
  *                   App\Services\PropiedadService::formatear()
  *
  * Contrato: GET /api/public/propiedades      ->  array de Propiedad
@@ -36,6 +47,7 @@ export interface Propiedad {
   localidad_id: number | null;
   metros_cuadrados: number | null;
   valor: number | null;
+  moneda: TipoMoneda | null;
   cantidad_habitaciones: number;
   cantidad_ambientes: number;
   descripcion: string | null;

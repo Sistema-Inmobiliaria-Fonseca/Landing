@@ -176,6 +176,16 @@
   line-height: 1.2;
 }
 
+/* Codigo de moneda junto al precio: secundario, sin cambiar el peso del valor. */
+.tarjeta__moneda {
+  margin-left: 4px;
+  font-family: var(--fuente);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--gris-500);
+}
+
 .tarjeta__datos {
   display: flex;
   flex-wrap: wrap;

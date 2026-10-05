@@ -1,0 +1,97 @@
+<main>
+  <section class="seccion seccion--suave">
+    <div class="contenedor">
+      <a class="detalle__volver" routerLink="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5M11 6l-6 6 6 6" />
+        </svg>
+        Volver a propiedades
+      </a>
+
+      @if (cargando()) {
+        <p class="detalle__aviso" role="status">Cargando propiedad…</p>
+      } @else if (error(); as mensaje) {
+        <p class="detalle__aviso">{{ mensaje }}</p>
+      } @else if (propiedad(); as p) {
+        <article class="detalle">
+          <div class="detalle__media">
+            @if (fotoActiva(); as imagen) {
+              <img class="detalle__foto" [src]="imagen.url" [alt]="p.nombre" />
+            } @else {
+              <div class="detalle__sin-foto">Sin foto</div>
+            }
+
+            @if (galeria().length > 1) {
+              <ul class="detalle__miniaturas">
+                @for (imagen of galeria(); track imagen.id; let i = $index) {
+                  <li>
+                    <button
+                      type="button"
+                      class="detalle__miniatura"
+                      [class.detalle__miniatura--activa]="i === indiceActiva()"
+                      [attr.aria-pressed]="i === indiceActiva()"
+                      [attr.aria-label]="'Ver la foto ' + (i + 1) + ' de ' + galeria().length"
+                      (click)="seleccionarFoto(i)"
+                    >
+                      <img [src]="imagen.url" alt="" loading="lazy" decoding="async" />
+                    </button>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+
+          <div class="detalle__info">
+            <div class="detalle__etiquetas">
+              <span class="etiqueta etiqueta--contorno">{{ p.estado | formatoEstado }}</span>
+
+              @if (p.apto_credito) {
+                <span class="etiqueta etiqueta--azul">Apto a crédito</span>
+              }
+
+              @for (categoria of p.categorias; track categoria.id) {
+                <span class="etiqueta etiqueta--neutra">{{ categoria.nombre }}</span>
+              }
+            </div>
+
+            <h1 class="detalle__nombre">{{ p.nombre }}</h1>
+
+            <p class="detalle__ubicacion">{{ p.ubicacion | formatoUbicacion }}</p>
+
+            <p class="detalle__valor">
+              {{ p.valor | formatoValor: p.moneda }}
+              @if (p.valor !== null) {
+                <span class="detalle__moneda">{{ p.moneda ?? 'ARS' }}</span>
+              }
+            </p>
+
+            <ul class="detalle__datos">
+              <li>{{ p.metros_cuadrados | formatoMetros }}</li>
+              <li>
+                {{ p.cantidad_habitaciones }}
+                {{ p.cantidad_habitaciones === 1 ? 'habitación' : 'habitaciones' }}
+              </li>
+              <li>
+                {{ p.cantidad_ambientes }}
+                {{ p.cantidad_ambientes === 1 ? 'ambiente' : 'ambientes' }}
+              </li>
+            </ul>
+
+            @if (p.descripcion) {
+              <p class="detalle__descripcion">{{ p.descripcion }}</p>
+            }
+
+            <a
+              class="boton boton--primario"
+              [href]="urlWhatsapp()"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactanos por esta propiedad
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</main>
