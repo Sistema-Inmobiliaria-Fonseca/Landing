@@ -1,14 +1,17 @@
 import { CategoriaPropiedad } from './categoria.model';
+import { ImagenPropiedad } from './imagen.model';
 import { Ubicacion } from './ubicacion.model';
 
 /**
  * Estados permitidos por el CHECK constraint de la base:
- * database/migrations/002_create_propiedades_table.sql
- *   CONSTRAINT chk_propiedades_estado CHECK (estado IN ('disponible', 'alquilada'))
+ *   database/migrations/002_create_propiedades_table.sql
+ *     CHECK (estado IN ('disponible', 'alquilada'))
+ *   database/migrations/009_allow_vendida_estado_propiedades.sql
+ *     reemplaza el CHECK por: CHECK (estado IN ('disponible','alquilada','vendida'))
  *
- * Validado también en App\Services\PropiedadService::RULES ('in:disponible,alquilada').
+ * Tambien valida App\Services\PropiedadService::RULES ('in:disponible,alquilada,vendida').
  */
-export type EstadoPropiedad = 'disponible' | 'alquilada';
+export type EstadoPropiedad = 'disponible' | 'alquilada' | 'vendida';
 
 /**
  * Propiedad inmobiliaria.
@@ -17,11 +20,15 @@ export type EstadoPropiedad = 'disponible' | 'alquilada';
  *                   database/migrations/007_add_localidad_id_to_propiedades_table.sql
  *                   App\Services\PropiedadService::formatear()
  *
- * Contrato: GET /api/propiedades  ->  array de Propiedad
- *           GET /api/propiedades/{id}  ->  Propiedad
+ * Contrato: GET /api/public/propiedades      ->  array de Propiedad
+ *           GET /api/public/propiedades/{id} ->  Propiedad
  *
- * NOTA: la tabla NO tiene ningún campo de imagen. `ubicacion` y `categorias`
- * son campos compuestos por el service, no columnas.
+ * IMPORTANTE: el backend responde dentro de un sobre `{ success, data }`. Por eso
+ * el tipo de la respuesta cruda NO es este: lo desenvuelve `PropiedadService`.
+ *
+ * NOTA: `ubicacion`, `categorias` e `imagenes` no son columnas. Los arma el
+ * service en base a los JOIN y a las tablas `categoria_propiedad` y
+ * `propiedad_imagenes`.
  */
 export interface Propiedad {
   id: number;
@@ -38,6 +45,12 @@ export interface Propiedad {
   updated_at: string;
   ubicacion: Ubicacion | null;
   categorias: CategoriaPropiedad[];
+  imagenes: ImagenPropiedad[];
+}
+
+/** Fotografia principal de la propiedad, o `null` si todavia no subio ninguna. */
+export function imagenPrincipal(propiedad: Propiedad): ImagenPropiedad | null {
+  return propiedad.imagenes.find((imagen) => imagen.es_principal) ?? propiedad.imagenes[0] ?? null;
 }
 
 /** Claves de los campos aceptados al crear/actualizar: App\Services\PropiedadService::RULES. */

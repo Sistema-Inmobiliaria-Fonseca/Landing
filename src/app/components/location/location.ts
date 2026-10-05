@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PENDIENTE } from '../../data/sitio.data';
+import { SITIO } from '../../data/sitio.data';
 
 @Component({
   selector: 'app-location',
@@ -8,5 +8,5 @@ import { PENDIENTE } from '../../data/sitio.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationComponent {
-  protected readonly pendiente = PENDIENTE;
+  protected readonly sitio = SITIO;
 }

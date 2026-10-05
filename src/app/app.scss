@@ -33,6 +33,154 @@
   width: 100%;
 }
 
+/* Filtros ----------------------------------------------------------------- */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px 40px;
+  margin-bottom: 28px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  background-color: var(--blanco);
+}
+
+.filtros__grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.filtros__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-texto-tenue);
+}
+
+.filtros__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Chip --------------------------------------------------------------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border: 1px solid var(--color-borde-fuerte);
+  border-radius: 999px;
+  background-color: var(--blanco);
+  color: var(--gris-700);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    background-color var(--transicion),
+    border-color var(--transicion),
+    color var(--transicion);
+
+  &:hover {
+    border-color: var(--azul-300);
+    background-color: var(--azul-050);
+    color: var(--azul-700);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--azul-600);
+    outline-offset: 2px;
+  }
+}
+
+.chip--activo {
+  border-color: var(--azul-700);
+  background-color: var(--azul-700);
+  color: var(--blanco);
+
+  &:hover {
+    border-color: var(--azul-700);
+    background-color: var(--azul-700);
+    color: var(--blanco);
+  }
+}
+
+/* El check solo aparece cuando el toggle está activo. */
+.chip--toggle svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity var(--transicion);
+}
+
+.chip--toggle.chip--activo svg {
+  opacity: 1;
+}
+
+.chip__total {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding-inline: 6px;
+  border-radius: 999px;
+  background-color: var(--gris-100);
+  color: var(--gris-600);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.chip--activo .chip__total {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: var(--blanco);
+}
+
+/* Conteo de resultados ----------------------------------------------------- */
+
+.propiedades__conteo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 18px;
+  font-size: 0.875rem;
+  color: var(--color-texto-tenue);
+}
+
+.propiedades__conteo-total {
+  color: var(--gris-500);
+}
+
+.propiedades__limpiar {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--azul-700);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--azul-600);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--azul-600);
+    outline-offset: 3px;
+  }
+}
+
 /* Estado vacio ------------------------------------------------------------ */
 
 .vacio {
@@ -90,5 +238,10 @@
 
   .propiedades__ver-todas {
     margin-bottom: 0;
+  }
+
+  .filtros {
+    gap: 20px 28px;
+    padding: 18px;
   }
 }

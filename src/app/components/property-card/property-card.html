@@ -1,5 +1,24 @@
 <article class="tarjeta">
   <div class="tarjeta__media" [class]="'tarjeta__media tono-' + tono()">
+    @if (foto(); as imagen) {
+      <img
+        class="tarjeta__foto"
+        [src]="imagen.url"
+        [alt]="propiedad().nombre"
+        loading="lazy"
+        decoding="async"
+      />
+    } @else {
+      <svg class="tarjeta__silueta" viewBox="0 0 400 240" fill="none" aria-hidden="true">
+        <path class="silueta__suelo" d="M0 208h400v32H0z" />
+        <path class="silueta__cuerpo" d="M118 208V128l82-52 82 52v80z" />
+        <path class="silueta__techo" d="M200 76 118 128h164z" />
+        <rect class="silueta__ventana" x="146" y="146" width="34" height="30" rx="3" />
+        <rect class="silueta__ventana" x="220" y="146" width="34" height="30" rx="3" />
+        <rect class="silueta__puerta" x="185" y="168" width="30" height="40" rx="3" />
+      </svg>
+    }
+
     <span class="etiqueta etiqueta--contorno tarjeta__estado">
       {{ propiedad().estado | formatoEstado }}
     </span>
@@ -13,14 +32,15 @@
       </span>
     }
 
-    <svg class="tarjeta__silueta" viewBox="0 0 400 240" fill="none" aria-hidden="true">
-      <path class="silueta__suelo" d="M0 208h400v32H0z" />
-      <path class="silueta__cuerpo" d="M118 208V128l82-52 82 52v80z" />
-      <path class="silueta__techo" d="M200 76 118 128h164z" />
-      <rect class="silueta__ventana" x="146" y="146" width="34" height="30" rx="3" />
-      <rect class="silueta__ventana" x="220" y="146" width="34" height="30" rx="3" />
-      <rect class="silueta__puerta" x="185" y="168" width="30" height="40" rx="3" />
-    </svg>
+    @if (totalFotos() > 1) {
+      <span class="tarjeta__contador">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M7 10.5h.01M17 10.5h.01M8 15l2.5-2.5L13 15l2-1.5L17 15" />
+        </svg>
+        {{ totalFotos() }}
+      </span>
+    }
   </div>
 
   <div class="tarjeta__cuerpo">

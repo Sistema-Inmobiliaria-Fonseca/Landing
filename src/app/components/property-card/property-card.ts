@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { Propiedad } from '../../core/models';
+import { ImagenPropiedad, Propiedad, imagenPrincipal } from '../../core/models';
 import { FormatoEstadoPipe } from '../../shared/pipes/formato-estado.pipe';
 import { FormatoMetrosPipe } from '../../shared/pipes/formato-metros.pipe';
 import { FormatoUbicacionPipe } from '../../shared/pipes/formato-ubicacion.pipe';
@@ -13,17 +13,27 @@ import { FormatoValorPipe } from '../../shared/pipes/formato-valor.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyCardComponent {
-  /** Propiedad tal como la devuelve GET /api/propiedades. */
+  /** Propiedad tal como la devuelve GET /api/public/propiedades. */
   readonly propiedad = input.required<Propiedad>();
 
   /**
-   * El backend no expone imágenes, por eso la "foto" es un placeholder
-   * visual derivado de la categoría. Es la única transformación de este
-   * componente que no viene del contrato.
+   * Foto principal. El backend ya la marca con `es_principal` y entrega la `url`
+   * absoluta, asi que la tarjeta no arma ninguna ruta.
+   *
+   * Si la propiedad todavia no tiene fotos, queda `null` y la plantilla muestra
+   * el placeholder de silueta.
+   */
+  protected readonly foto = computed<ImagenPropiedad | null>(() => imagenPrincipal(this.propiedad()));
+
+  /** Cuantas fotos hay en total, para avisar "1 de N" en la esquina. */
+  protected readonly totalFotos = computed(() => this.propiedad().imagenes.length);
+
+  /**
+   * Tono del placeholder, derivado de la categoria. Solo se usa cuando la
+   * propiedad no tiene imagenes.
    */
   protected readonly tono = computed(() => {
     const [primera] = this.propiedad().categorias;
-
     return primera ? (primera.id % 4) + 1 : 1;
   });
 
@@ -33,7 +43,6 @@ export class PropertyCardComponent {
 
   protected readonly categoriasRestantes = computed(() => {
     const restantes = this.propiedad().categorias.slice(1);
-
     return restantes.length > 0 ? `+${restantes.length}` : null;
   });
 }

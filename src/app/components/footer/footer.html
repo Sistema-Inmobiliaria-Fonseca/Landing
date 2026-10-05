@@ -14,9 +14,37 @@
       <p class="footer__nombre">{{ sitio.nombre }}</p>
 
       <p class="footer__descripcion">
-        sitio informativo de propiedades. La información se completa a medida
-        que la inmobiliaria cargue sus datos.
+        Servicio integral de asesoramiento y comercialización en venta y
+        preventa, adaptado a las necesidades de cada cliente.
       </p>
+
+      @if (sitio.redes.length > 0) {
+        <ul class="footer__redes">
+          @for (red of sitio.redes; track red.nombre) {
+            <li>
+              <a
+                class="footer__red"
+                [href]="red.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="red.nombre"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path [attr.d]="red.icono" />
+                </svg>
+              </a>
+            </li>
+          }
+        </ul>
+      }
     </div>
 
     <nav class="footer__columna" aria-label="Navegación del pie de página">
@@ -33,9 +61,21 @@
     <div class="footer__columna">
       <h3 class="footer__titulo">Contacto</h3>
       <ul class="footer__lista footer__lista--contacto">
-        @if (sitio.telefono) {
+        @if (telefonoEnlace) {
           <li>
-            <a class="footer__enlace" [href]="'tel:' + sitio.telefono">{{ sitio.telefono }}</a>
+            <a class="footer__enlace" [href]="telefonoEnlace">{{ sitio.telefono }}</a>
+          </li>
+        }
+        @if (sitio.whatsapp) {
+          <li>
+            <a
+              class="footer__enlace footer__enlace--whatsapp"
+              [href]="sitio.whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Escribinos por WhatsApp
+            </a>
           </li>
         }
         @if (sitio.email) {
@@ -54,13 +94,28 @@
           </li>
         }
       </ul>
+
+      @if (sitio.horarios.length > 0) {
+        <h3 class="footer__titulo footer__titulo--separado">Horarios</h3>
+
+        <ul class="footer__lista footer__horarios">
+          @for (horario of sitio.horarios; track horario.dia) {
+            <li>
+              <span>{{ horario.dia }}</span>
+              <span>{{ horario.rango }}</span>
+            </li>
+          }
+        </ul>
+      }
     </div>
   </div>
 
   <div class="footer__barra">
     <div class="contenedor footer__barra-contenido">
       <p>© {{ anioActual }} {{ sitio.nombre }}</p>
-      <p class="footer__legal">Proyecto en construcción. Sin propiedades publicadas.</p>
+      @if (sitio.lema) {
+        <p class="footer__legal">{{ sitio.lema }}</p>
+      }
     </div>
   </div>
 </footer>

@@ -51,6 +51,35 @@
   color: var(--gris-500);
 }
 
+/* Redes sociales ----------------------------------------------------------- */
+
+.footer__redes {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.footer__red {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radio-md);
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--gris-300);
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.footer__red svg {
+  width: 19px;
+  height: 19px;
+}
+
+.footer__red:hover {
+  background-color: var(--azul-600);
+  color: var(--blanco);
+}
+
 /* Columnas ---------------------------------------------------------------- */
 
 .footer__titulo {
@@ -60,6 +89,27 @@
   text-transform: uppercase;
   color: var(--blanco);
   margin-bottom: 18px;
+}
+
+/* Segundo título dentro de la misma columna (Contacto -> Horarios). */
+.footer__titulo--separado {
+  margin-top: 30px;
+}
+
+.footer__horarios li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--gris-400);
+}
+
+.footer__horarios li > span:last-child {
+  font-weight: 600;
+  color: var(--blanco);
+  white-space: nowrap;
 }
 
 .footer__lista {
@@ -82,6 +132,19 @@
 
 .footer__lista--contacto .footer__texto {
   max-width: 20rem;
+}
+
+/* El enlace a WhatsApp es la vía de contacto principal: se destaca del resto. */
+.footer__enlace--whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.footer__enlace--whatsapp:hover {
+  color: #86efac;
 }
 
 /* Barra legal ------------------------------------------------------------- */

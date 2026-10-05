@@ -1,59 +1,77 @@
 # Landing
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+Sitio publico de la inmobiliaria. Es una SPA de Angular 20 que muestra las
+propiedades publicadas en el backend.
+
+## De donde salen los datos
+
+La Landing **no tiene sesion ni token**. Por eso consume las rutas publicas del
+backend, que no piden `Authorization`:
+
+| Ruta | Que devuelve |
+| --- | --- |
+| `GET /api/public/propiedades` | Listado de propiedades, con `ubicacion`, `categorias` e `imagenes` |
+| `GET /api/public/propiedades/{id}` | Detalle de una propiedad |
+| `GET /api/public/categorias` | Catalogo de categorias |
+
+Las rutas `/api/propiedades` (sin `public`) son del panel y **exigen token
+Bearer**: la Landing no debe llamarlas nunca, da 401.
+
+El backend responde siempre dentro de un sobre `{ success, data }`.
+`ApiService` (en `src/app/core/services/api.service.ts`) desenvuelve ese `data`;
+si se olvida, `propiedades.length` queda `undefined` y la grilla nunca se dibuja
+aunque la API responda 200.
+
+Las fotos se sirven por `GET /uploads/propiedades/{nombre}`, tambien sin token,
+porque van en el `<img>` del sitio y ahi no se pueden mandar cabeceras.
+
+## Requisitos para ver propiedades
+
+1. MySQL prendido y con la base `inmobiliaria` migrada y sembrada:
+   ```bash
+   cd Backend-
+   php bin/console migrate:fresh
+   ```
+2. API corriendo en el puerto 8000:
+   ```bash
+   cd Backend-
+   php -S localhost:8000 -t public bootstrap/front.php
+   ```
+3. Al menos una propiedad cargada (por ejemplo desde el panel).
 
 ## Development server
 
-To start a local development server, run:
-
 ```bash
-ng serve
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+El sitio queda en `http://localhost:4300/` (el 4200 lo usa el FrontendAdmin).
 
-## Code scaffolding
+En desarrollo las llamadas a la API son **relativas** (`/api/public/...`) y las
+reenvía el proxy de `proxy.conf.json` a `http://localhost:8000`. Por eso en
+local no hace falta configurar CORS ni cambiar la URL de la API en ningun lado.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Configuracion por entorno
 
-```bash
-ng generate component component-name
-```
+`src/environments/environment.ts` es el de desarrollo y deja `apiBaseUrl` vacio a
+proposito (se usa el proxy). Para produccion, `angular.json` ->
+`build.production.fileReplacements` reemplaza ese archivo por
+`environment.production.ts`, que trae el origen completo de la API.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+**Antes de publicar hay que cambiar `apiBaseUrl` en `environment.production.ts`**
+con el dominio real. Si se publica vacio, el sitio se ve bien pero no trae
+propiedades: `/api/public/...` responde 404 contra el servidor de estaticos.
 
 ## Building
 
-To build the project run:
-
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Compila para produccion y deja el resultado en `dist/landing/`.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Tests
 
 ```bash
-ng test
+npm test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
