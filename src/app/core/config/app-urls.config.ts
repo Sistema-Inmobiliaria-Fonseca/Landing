@@ -11,10 +11,5 @@
  */
 
 /** Origen del panel de administración (FrontendAdmin). */
-export const FRONTEND_ADMIN_URL = 'http://localhost:4200';
-
-/**
- * Ruta de login del panel. No inventar: en el FrontendAdmin la declara
- * `app-routing-module.ts` (`{ path: 'login', ... }`), y la raíz redirige ahí.
- */
+export const FRONTEND_ADMIN_URL = 'https://carlosfonsecanegociosinmobiliarios.com.ar/admin/login';
 export const FRONTEND_ADMIN_LOGIN = `${FRONTEND_ADMIN_URL}/login`;
