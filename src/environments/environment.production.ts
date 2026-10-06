@@ -10,5 +10,5 @@ import { Environment } from './environment.model';
  * llegan a la API. Recordar cambiar el dominio antes de publicar.
  */
 export const environment: Environment = {
-  apiBaseUrl: 'https://api.inmobiliaria.com.ar',
+  apiBaseUrl: '',
 };
