@@ -1,5 +1,7 @@
 <main>
   <app-hero />
+  <app-about />
+  <app-services />
 
   <section class="seccion seccion--suave" id="propiedades">
     <div class="contenedor">
@@ -49,215 +51,249 @@
                   <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
                 </svg>
 
-                {{ filtrosAbiertos() ? 'Ocultar filtros' : 'Filtrar' }}
+                {{ filtrosAbiertos() ? "Ocultar filtros" : "Filtrar" }}
               </button>
             </div>
           </div>
 
           @if (filtrosAbiertos()) {
             <div class="filtros__rejilla" id="filtros-panel">
-            @if (hayVariasCategorias()) {
-              <div class="filtros__grupo filtros__grupo--ancho">
-                <span class="filtros__label" id="filtro-categoria">Categoría</span>
-
-                <div class="filtros__chips" role="group" aria-labelledby="filtro-categoria">
-                  <button
-                    type="button"
-                    class="chip"
-                    [class.chip--activo]="categoriaActiva() === null"
-                    [attr.aria-pressed]="categoriaActiva() === null"
-                    (click)="seleccionarCategoria(null)"
+              @if (hayVariasCategorias()) {
+                <div class="filtros__grupo filtros__grupo--ancho">
+                  <span class="filtros__label" id="filtro-categoria"
+                    >Categoría</span
                   >
-                    Todas
-                  </button>
 
-                  @for (categoria of categorias(); track categoria.id) {
+                  <div
+                    class="filtros__chips"
+                    role="group"
+                    aria-labelledby="filtro-categoria"
+                  >
                     <button
                       type="button"
                       class="chip"
-                      [class.chip--activo]="categoriaActiva() === categoria.id"
-                      [attr.aria-pressed]="categoriaActiva() === categoria.id"
-                      (click)="seleccionarCategoria(categoria.id)"
+                      [class.chip--activo]="categoriaActiva() === null"
+                      [attr.aria-pressed]="categoriaActiva() === null"
+                      (click)="seleccionarCategoria(null)"
                     >
-                      {{ categoria.nombre }}
-                      <span class="chip__total">{{ categoria.total }}</span>
+                      Todas
                     </button>
-                  }
+
+                    @for (categoria of categorias(); track categoria.id) {
+                      <button
+                        type="button"
+                        class="chip"
+                        [class.chip--activo]="
+                          categoriaActiva() === categoria.id
+                        "
+                        [attr.aria-pressed]="categoriaActiva() === categoria.id"
+                        (click)="seleccionarCategoria(categoria.id)"
+                      >
+                        {{ categoria.nombre }}
+                        <span class="chip__total">{{ categoria.total }}</span>
+                      </button>
+                    }
+                  </div>
                 </div>
-              </div>
-            }
+              }
 
-            <div class="filtros__grupo">
-              <span class="filtros__label" id="filtro-precio">Precio</span>
-
-              <div class="filtros__chips" role="group" aria-labelledby="filtro-precio">
-                @for (moneda of monedas; track moneda) {
-                  <button
-                    type="button"
-                    class="chip chip--compacto"
-                    [class.chip--activo]="monedaPrecio() === moneda"
-                    [attr.aria-pressed]="monedaPrecio() === moneda"
-                    (click)="cambiarMonedaPrecio(moneda)"
-                  >
-                    {{ moneda }}
-                  </button>
-                }
-              </div>
-
-              <div class="filtros__rango">
-                <label class="campo">
-                  <span class="campo__label">Desde ({{ monedaPrecio() }})</span>
-                  <input
-                    #desdePrecio
-                    class="campo__control"
-                    type="number"
-                    inputmode="numeric"
-                    min="0"
-                    step="any"
-                    placeholder="Sin mínimo"
-                    [value]="precioDesde() ?? ''"
-                    (input)="precioDesdeIngresado(desdePrecio.value)"
-                  />
-                </label>
-
-                <label class="campo">
-                  <span class="campo__label">Hasta ({{ monedaPrecio() }})</span>
-                  <input
-                    #hastaPrecio
-                    class="campo__control"
-                    type="number"
-                    inputmode="numeric"
-                    min="0"
-                    step="any"
-                    placeholder="Sin máximo"
-                    [value]="precioHasta() ?? ''"
-                    (input)="precioHastaIngresado(hastaPrecio.value)"
-                  />
-                </label>
-              </div>
-            </div>
-
-            @if (opcionesAmbientes().length > 0) {
               <div class="filtros__grupo">
-                <span class="filtros__label" id="filtro-ambientes">Ambientes</span>
+                <span class="filtros__label" id="filtro-precio">Precio</span>
 
-                <div class="filtros__chips" role="group" aria-labelledby="filtro-ambientes">
-                  @for (opcion of opcionesAmbientes(); track opcion.valor) {
+                <div
+                  class="filtros__chips"
+                  role="group"
+                  aria-labelledby="filtro-precio"
+                >
+                  @for (moneda of monedas; track moneda) {
                     <button
                       type="button"
                       class="chip chip--compacto"
-                      [class.chip--activo]="ambientes() === opcion.valor"
-                      [attr.aria-pressed]="ambientes() === opcion.valor"
-                      (click)="cambiarAmbientes(ambientes() === opcion.valor ? null : opcion.valor)"
+                      [class.chip--activo]="monedaPrecio() === moneda"
+                      [attr.aria-pressed]="monedaPrecio() === moneda"
+                      (click)="cambiarMonedaPrecio(moneda)"
                     >
-                      {{ opcion.etiqueta }}
+                      {{ moneda }}
                     </button>
                   }
                 </div>
+
+                <div class="filtros__rango">
+                  <label class="campo">
+                    <span class="campo__label"
+                      >Desde ({{ monedaPrecio() }})</span
+                    >
+                    <input
+                      #desdePrecio
+                      class="campo__control"
+                      type="number"
+                      inputmode="numeric"
+                      min="0"
+                      step="any"
+                      placeholder="Sin mínimo"
+                      [value]="precioDesde() ?? ''"
+                      (input)="precioDesdeIngresado(desdePrecio.value)"
+                    />
+                  </label>
+
+                  <label class="campo">
+                    <span class="campo__label"
+                      >Hasta ({{ monedaPrecio() }})</span
+                    >
+                    <input
+                      #hastaPrecio
+                      class="campo__control"
+                      type="number"
+                      inputmode="numeric"
+                      min="0"
+                      step="any"
+                      placeholder="Sin máximo"
+                      [value]="precioHasta() ?? ''"
+                      (input)="precioHastaIngresado(hastaPrecio.value)"
+                    />
+                  </label>
+                </div>
               </div>
-            }
 
-            <div class="filtros__grupo">
-              <span class="filtros__label">Superficie</span>
+              @if (opcionesAmbientes().length > 0) {
+                <div class="filtros__grupo">
+                  <span class="filtros__label" id="filtro-ambientes"
+                    >Ambientes</span
+                  >
 
-              <div class="filtros__rango">
-                <label class="campo">
-                  <span class="campo__label">Desde m²</span>
-                  <input
-                    #desdeSuperficie
-                    class="campo__control"
-                    type="number"
-                    inputmode="numeric"
-                    min="0"
-                    step="any"
-                    placeholder="Sin mínimo"
-                    [value]="superficieDesde() ?? ''"
-                    (input)="superficieDesdeIngresado(desdeSuperficie.value)"
-                  />
-                </label>
+                  <div
+                    class="filtros__chips"
+                    role="group"
+                    aria-labelledby="filtro-ambientes"
+                  >
+                    @for (opcion of opcionesAmbientes(); track opcion.valor) {
+                      <button
+                        type="button"
+                        class="chip chip--compacto"
+                        [class.chip--activo]="ambientes() === opcion.valor"
+                        [attr.aria-pressed]="ambientes() === opcion.valor"
+                        (click)="
+                          cambiarAmbientes(
+                            ambientes() === opcion.valor ? null : opcion.valor
+                          )
+                        "
+                      >
+                        {{ opcion.etiqueta }}
+                      </button>
+                    }
+                  </div>
+                </div>
+              }
 
-                <label class="campo">
-                  <span class="campo__label">Hasta m²</span>
-                  <input
-                    #hastaSuperficie
-                    class="campo__control"
-                    type="number"
-                    inputmode="numeric"
-                    min="0"
-                    step="any"
-                    placeholder="Sin máximo"
-                    [value]="superficieHasta() ?? ''"
-                    (input)="superficieHastaIngresado(hastaSuperficie.value)"
-                  />
-                </label>
-              </div>
-            </div>
-
-            @if (provincias().length > 0) {
               <div class="filtros__grupo">
-                <span class="filtros__label" id="filtro-ubicacion">Ubicación</span>
+                <span class="filtros__label">Superficie</span>
 
-                <label class="campo">
-                  <span class="campo__label">Provincia</span>
-                  <select
-                    #provincia
-                    class="campo__control"
-                    [value]="provinciaId() ?? ''"
-                    (change)="cambiarProvincia(provincia.value)"
-                  >
-                    <option value="">Todas</option>
-                    @for (opcion of provincias(); track opcion.id) {
-                      <option [value]="opcion.id">{{ opcion.nombre }}</option>
-                    }
-                  </select>
-                </label>
+                <div class="filtros__rango">
+                  <label class="campo">
+                    <span class="campo__label">Desde m²</span>
+                    <input
+                      #desdeSuperficie
+                      class="campo__control"
+                      type="number"
+                      inputmode="numeric"
+                      min="0"
+                      step="any"
+                      placeholder="Sin mínimo"
+                      [value]="superficieDesde() ?? ''"
+                      (input)="superficieDesdeIngresado(desdeSuperficie.value)"
+                    />
+                  </label>
 
-                <label class="campo">
-                  <span class="campo__label">Localidad</span>
-                  <select
-                    #localidad
-                    class="campo__control"
-                    [value]="localidadId() ?? ''"
-                    (change)="cambiarLocalidad(localidad.value)"
-                  >
-                    <option value="">Todas</option>
-                    @for (opcion of localidades(); track opcion.id) {
-                      <option [value]="opcion.id">{{ opcion.nombre }}</option>
-                    }
-                  </select>
-                </label>
+                  <label class="campo">
+                    <span class="campo__label">Hasta m²</span>
+                    <input
+                      #hastaSuperficie
+                      class="campo__control"
+                      type="number"
+                      inputmode="numeric"
+                      min="0"
+                      step="any"
+                      placeholder="Sin máximo"
+                      [value]="superficieHasta() ?? ''"
+                      (input)="superficieHastaIngresado(hastaSuperficie.value)"
+                    />
+                  </label>
+                </div>
               </div>
-            }
 
-            <div class="filtros__grupo">
-              <span class="filtros__label" id="filtro-credito">Financiación</span>
-
-              <div class="filtros__chips" role="group" aria-labelledby="filtro-credito">
-                <button
-                  type="button"
-                  class="chip chip--toggle"
-                  [class.chip--activo]="soloCredito()"
-                  [attr.aria-pressed]="soloCredito()"
-                  (click)="alternarCredito()"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
+              @if (provincias().length > 0) {
+                <div class="filtros__grupo">
+                  <span class="filtros__label" id="filtro-ubicacion"
+                    >Ubicación</span
                   >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
 
-                  Apto a crédito
-                  <span class="chip__total">{{ creditoTotal() }}</span>
-                </button>
+                  <label class="campo">
+                    <span class="campo__label">Provincia</span>
+                    <select
+                      #provincia
+                      class="campo__control"
+                      [value]="provinciaId() ?? ''"
+                      (change)="cambiarProvincia(provincia.value)"
+                    >
+                      <option value="">Todas</option>
+                      @for (opcion of provincias(); track opcion.id) {
+                        <option [value]="opcion.id">{{ opcion.nombre }}</option>
+                      }
+                    </select>
+                  </label>
+
+                  <label class="campo">
+                    <span class="campo__label">Localidad</span>
+                    <select
+                      #localidad
+                      class="campo__control"
+                      [value]="localidadId() ?? ''"
+                      (change)="cambiarLocalidad(localidad.value)"
+                    >
+                      <option value="">Todas</option>
+                      @for (opcion of localidades(); track opcion.id) {
+                        <option [value]="opcion.id">{{ opcion.nombre }}</option>
+                      }
+                    </select>
+                  </label>
+                </div>
+              }
+
+              <div class="filtros__grupo">
+                <span class="filtros__label" id="filtro-credito"
+                  >Financiación</span
+                >
+
+                <div
+                  class="filtros__chips"
+                  role="group"
+                  aria-labelledby="filtro-credito"
+                >
+                  <button
+                    type="button"
+                    class="chip chip--toggle"
+                    [class.chip--activo]="soloCredito()"
+                    [attr.aria-pressed]="soloCredito()"
+                    (click)="alternarCredito()"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+
+                    Apto a crédito
+                    <span class="chip__total">{{ creditoTotal() }}</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
       }
@@ -274,7 +310,9 @@
         <div class="propiedades__conteo">
           <p>
             {{ propiedadesFiltradas().length }}
-            {{ propiedadesFiltradas().length === 1 ? 'propiedad' : 'propiedades' }}
+            {{
+              propiedadesFiltradas().length === 1 ? "propiedad" : "propiedades"
+            }}
             @if (hayFiltros()) {
               <span class="propiedades__conteo-total">
                 de {{ propiedades().length }}
@@ -283,7 +321,11 @@
           </p>
 
           @if (hayFiltros()) {
-            <button type="button" class="propiedades__limpiar" (click)="limpiarFiltros()">
+            <button
+              type="button"
+              class="propiedades__limpiar"
+              (click)="limpiarFiltros()"
+            >
               Limpiar filtros
             </button>
           }
@@ -299,7 +341,14 @@
       } @else {
         <div class="vacio">
           <span class="vacio__icono" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M3 10.5 12 3l9 7.5" />
               <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
               <path d="M10 21v-6h4v6" />
@@ -308,13 +357,21 @@
 
           @if (hayFiltros()) {
             <p class="vacio__titulo">No hay propiedades con esos filtros.</p>
-            <p class="vacio__texto">Probá combinándolos o quitá los filtros para ver todas.</p>
+            <p class="vacio__texto">
+              Probá combinándolos o quitá los filtros para ver todas.
+            </p>
 
-            <button type="button" class="boton boton--contorno" (click)="limpiarFiltros()">
+            <button
+              type="button"
+              class="boton boton--contorno"
+              (click)="limpiarFiltros()"
+            >
               Limpiar filtros
             </button>
           } @else {
-            <p class="vacio__titulo">Actualmente no hay propiedades publicadas.</p>
+            <p class="vacio__titulo">
+              Actualmente no hay propiedades publicadas.
+            </p>
             <p class="vacio__texto">
               La sección se completará automáticamente cuando se carguen
               propiedades al sistema.
@@ -327,8 +384,6 @@
     </div>
   </section>
 
-  <app-about />
-  <app-services />
   <app-location />
   <app-contact />
 </main>
