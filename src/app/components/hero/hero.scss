@@ -94,6 +94,59 @@
   background-color: var(--blanco);
 }
 
+/* Atajos de categoría ------------------------------------------------------ */
+
+.hero__categorias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: 24px;
+}
+
+.hero__categorias-label {
+  font-size: 0.8125rem;
+  color: var(--color-texto-tenue);
+}
+
+.hero__categorias-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero__categoria {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 13px;
+  border: 1px solid var(--azul-200);
+  border-radius: var(--radio-full);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--azul-700);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color var(--transicion),
+    border-color var(--transicion),
+    color var(--transicion),
+    box-shadow var(--transicion);
+
+  &:hover {
+    border-color: var(--azul-500);
+    background-color: var(--blanco);
+    color: var(--azul-600);
+    box-shadow: var(--sombra-xs);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--azul-600);
+    outline-offset: 2px;
+  }
+}
+
 /* Indicadores ------------------------------------------------------------- */
 
 .hero__aviso {

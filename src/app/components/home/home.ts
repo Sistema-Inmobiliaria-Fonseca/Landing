@@ -330,6 +330,9 @@ export class HomeComponent implements OnInit {
 
   protected seleccionarCategoria(id: number | null): void {
     this.categoriaActiva.set(id);
+    // Llegando desde los atajos del Hero el panel esta cerrado: se abre para
+    // que el usuario vea el chip de la categoría que acaba de elegir.
+    this.filtrosAbiertos.set(true);
   }
 
   /** Abre o cierra el panel de filtros. */

@@ -37,6 +37,24 @@
         </a>
         <a class="boton hero__boton-contorno" href="#contacto">Contacto</a>
       </div>
+
+      @if (categorias().length > 0) {
+        <div class="hero__categorias">
+          <span class="hero__categorias-label">Explorar por categoría</span>
+
+          <div class="hero__categorias-lista">
+            @for (opcion of categorias(); track opcion.id) {
+              <a
+                class="hero__categoria"
+                href="#propiedades"
+                (click)="categoria.emit(opcion.id)"
+              >
+                {{ opcion.nombre }}
+              </a>
+            }
+          </div>
+        </div>
+      }
     </div>
 
     <div class="hero__visual">

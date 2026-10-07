@@ -2,8 +2,16 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnDestroy,
+  input,
+  output,
   signal,
 } from '@angular/core';
+
+/** Categoría mínima que necesita el Hero para armar sus atajos. */
+interface CategoriaAtajo {
+  id: number;
+  nombre: string;
+}
 
 /** Una imagen del carrusel del Hero. */
 interface Slide {
@@ -24,6 +32,15 @@ const INTERVALO_MS = 5000;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent implements OnDestroy {
+  /**
+   * Categorías del catálogo para los atajos bajo el botón principal. Se pasan
+   * desde la home, que ya las pidió a la API: el Hero no carga datos propio.
+   */
+  readonly categorias = input.required<CategoriaAtajo[]>();
+
+  /** Avisa qué categoría eligió el usuario para que la home la filtre. */
+  readonly categoria = output<number>();
+
   /**
    * Imagenes reales provistas para la Landing. Solo se usan archivos que
    * existen en `public/images`: no se generan ni se inventan imagenes.

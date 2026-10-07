@@ -1,5 +1,8 @@
 <main>
-  <app-hero />
+  <app-hero
+    [categorias]="categorias()"
+    (categoria)="seleccionarCategoria($event)"
+  />
   <app-about />
   <app-services />
 
