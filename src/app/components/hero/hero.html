@@ -49,7 +49,91 @@
                 href="#propiedades"
                 (click)="categoria.emit(opcion.id)"
               >
-                {{ opcion.nombre }}
+                <span class="hero__categoria-icono" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    @switch (opcion.nombre.toLowerCase()) {
+                      @case ('casas') {
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <path d="M9 22V12h6v10" />
+                      }
+
+                      @case ('departamentos') {
+                        <path d="M16 21V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16" />
+                        <path d="M2 21h20" />
+                        <path d="M8 6.5h2M12 6.5h2M8 10.5h2M12 10.5h2M8 14.5h2M12 14.5h2" />
+                        <path d="M8.5 21v-3h3v3" />
+                      }
+
+                      @case ('dúplex') {
+                        <path d="M2 11.5 6.5 7l4.5 4.5" />
+                        <path d="M11 11.5 15.5 7l4.5 4.5" />
+                        <path d="M2 11.5V21h18v-9.5" />
+                        <path d="M11 11.5V21" />
+                        <path d="M4.5 21v-4.5h3V21" />
+                        <path d="M13.5 21v-4.5h3V21" />
+                      }
+
+                      @case ('locales') {
+                        <path d="M3 10l2.5-5h13L21 10z" />
+                        <path d="M9 5v5M12 5v5M15 5v5" />
+                        <path d="M5 10v11h14V10" />
+                        <path d="M10 21v-5h4v5" />
+                        <path d="M6.5 14.5h2.5v3H6.5zM15 14.5h2.5v3H15z" />
+                      }
+
+                      @case ('oficinas') {
+                        <path d="M14 21V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v17" />
+                        <path d="M3 21h18" />
+                        <path d="M14 10h4a1 1 0 0 1 1 1v10" />
+                        <path d="M8 7h3M8 11h3M8 15h3" />
+                        <path d="M16 13.5h1.5M16 17h1.5" />
+                      }
+
+                      @case ('lotes') {
+                        <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                        <path d="M12 3v18" />
+                        <path d="M3 12h18" />
+                      }
+
+                      @case ('campos') {
+                        <circle cx="6" cy="6.5" r="3" />
+                        <path d="M2 19q4.5-7 9 0" />
+                        <path d="M11 19q5.5-8 11 0" />
+                      }
+
+                      @case ('quincho') {
+                        <path d="M4 10h16" />
+                        <path d="M5.5 10a6.5 6.5 0 0 0 13 0" />
+                        <path d="M8 21l4-4.5 4 4.5" />
+                        <path d="M9.5 8c1.3-1.3 1.3-2.7 0-4" />
+                        <path d="M14.5 8c1.3-1.3 1.3-2.7 0-4" />
+                      }
+
+                      @case ('quinchos') {
+                        <path d="M4 10h16" />
+                        <path d="M5.5 10a6.5 6.5 0 0 0 13 0" />
+                        <path d="M8 21l4-4.5 4 4.5" />
+                        <path d="M9.5 8c1.3-1.3 1.3-2.7 0-4" />
+                        <path d="M14.5 8c1.3-1.3 1.3-2.7 0-4" />
+                      }
+
+                      @default {
+                        <path d="M20.6 13.4 12 22l-9-9V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" />
+                        <path d="M7.5 7.5h.01" />
+                      }
+                    }
+                  </svg>
+                </span>
+                <span class="hero__categoria-nombre">{{ opcion.nombre }}</span>
               </a>
             }
           </div>
